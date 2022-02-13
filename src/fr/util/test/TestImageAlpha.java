@@ -97,21 +97,6 @@ public class TestImageAlpha
 						
 						System.out.println( "color : " + rgb  );
 
-						
-						if( rgb == -513 )
-						{
-
-							bufferedImageOriginal.setRGB(c,  l, 16777215);
-						}
-
-						
-						if( rgb == -3 )
-						{
-
-							bufferedImageOriginal.setRGB(c,  l, 16777215);
-						}
-
-						
 						if( rgb == -1 )
 						{
 
