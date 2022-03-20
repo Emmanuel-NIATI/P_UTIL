@@ -23,10 +23,13 @@ public class TestFO5
 		int i = 0;
 		String line;
 
+		String pathIn = "C:\\Users\\emman\\eclipse-working\\in";
+		String pathOut = "C:\\Users\\emman\\eclipse-working\\out";
+		
 		try
 		{
 
-			fileReader = new FileReader( "C:\\Users\\emman\\Documents\\Clock\\in\\list_out.txt" );
+			fileReader = new FileReader( pathIn + "\\" + "list_in.txt" );
 						
 			bufferedReader = new BufferedReader( fileReader );
 			
@@ -43,10 +46,9 @@ public class TestFO5
 
 			}
 
-			fileWriter = new FileWriter( "C:\\Users\\emman\\Documents\\Clock\\out\\scriptDIF.txt" );
+			fileWriter = new FileWriter( pathOut + "\\" + "scriptDIF.txt" );
 			fileWriter.write( stringBuffer.toString() );
 			fileWriter.close();
-
 			
 		} 
 		catch (IOException ioe)

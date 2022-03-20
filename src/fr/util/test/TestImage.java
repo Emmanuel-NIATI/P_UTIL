@@ -19,7 +19,7 @@ public class TestImage
 		try
 		{
 
-			String pathOut = "D:\\EclipseWorking\\out";
+			String pathOut = "C:\\Users\\emman\\eclipse-working\\out";
 
 			BufferedImage bufferedImage = new BufferedImage( _width, _height, BufferedImage.TYPE_INT_ARGB );
 

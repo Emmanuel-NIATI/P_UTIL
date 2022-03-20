@@ -28,8 +28,6 @@ public class TestMIDI03
 			// Create a sequencer
 		    Sequencer sequencer = MidiSystem.getSequencer();
 		    sequencer.open();
-
-		    
 		    
 			// Create a sequence		    
 

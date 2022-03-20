@@ -23,8 +23,8 @@ public class TestImageAlpha
 		try
 		{
 			
-			String pathIn = "D:\\eclipse-working\\in"; 
-			String pathOut = "D:\\eclipse-working\\out";
+			String pathIn = "C:\\Users\\emman\\eclipse-working\\in"; 
+			String pathOut = "C:\\Users\\emman\\eclipse-working\\out";
 			
 			File fileOut = new File( pathOut );
 			

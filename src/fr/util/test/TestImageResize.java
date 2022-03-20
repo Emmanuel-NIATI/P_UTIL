@@ -16,8 +16,8 @@ public class TestImageResize
 		try
 		{
 
-			String pathIn = "C:\\Users\\emman\\Documents\\Clock\\in"; 
-			String pathOut = "C:\\Users\\emman\\Documents\\Clock\\out";
+			String pathIn = "C:\\Users\\emman\\eclipse-working\\in"; 
+			String pathOut = "C:\\Users\\emman\\eclipse-working\\out";
 
 			File fileIn = new File( pathIn ); 
 

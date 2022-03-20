@@ -20,6 +20,8 @@ public class TestMIDI01
 	public static final int NOTE_OFF = 0x80;
 	public static final String[] NOTE_NAMES = {"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"};
 	
+	public static String fileIn = "C:\\Users\\emman\\eclipse-working\\in\\KOTO - Visitors.mid";
+	
 	//https://www.geeksforgeeks.org/java-midi/
 	
 	
@@ -29,7 +31,7 @@ public class TestMIDI01
 		try
 		{
 
-			Sequence sequence = MidiSystem.getSequence( new File("D:\\EclipseWorking\\in\\KOTO - Visitors.mid") );
+			Sequence sequence = MidiSystem.getSequence( new File( fileIn ) );
 			
 			// Create a sequencer for the sequence
 		    Sequencer sequencer = MidiSystem.getSequencer();

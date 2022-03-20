@@ -10,90 +10,84 @@ public class TestRename
 
 	public static void main(String[] args)
 	{
+		String pathIn = "C:\\Users\\emman\\eclipse-working\\in";
+		String pathOut = "C:\\Users\\emman\\eclipse-working\\out";
 
-			String pathIn = "D:\\EclipseWorking\\in"; 
-			String pathOut = "D:\\EclipseWorking\\out";
+		File fileIn = new File( pathIn ); 
 
-			File fileIn = new File( pathIn ); 
+		File[] files = fileIn.listFiles();
+		File file;
 
-			File[] files = fileIn.listFiles();
-			File file;
+		ArrayList<File> arrayListFile = new ArrayList<File>();
 
-			ArrayList<File> arrayListFile = new ArrayList<File>();
+		for(int i = 0; i < files.length; i++ )
+		{
 
-			for(int i = 0; i < files.length; i++ )
+			file = files[i];
+
+			if( file.isFile() )
 			{
 
-				file = files[i];
+				String ext = "dtc";
+				String name = file.getName();
 
-				if( file.isFile() )
+				int j = name.lastIndexOf('.');
+
+				if (j > 0)
 				{
+				    ext = name.substring(j+1);
+				}
 
-					String ext = "dtc";
-					String name = file.getName();
-
-					int j = name.lastIndexOf('.');
-
-					if (j > 0)
-					{
-					    ext = name.substring(j+1);
-					}
-
-					if( "jpg".equals( ext ) )
-					{
-						arrayListFile.add(file);
-					}
-
+				if( "jpg".equals( ext ) )
+				{
+					arrayListFile.add(file);
 				}
 
 			}
 
+		}
+
+		// Changement de nom
 			
-			// Changement de nom
+		int i = 0;
 			
-			int i = 0;
+		for( File f : arrayListFile )
+		{
+
+			i++;
+				
+			String name = f.getName().substring(13);
+
+			System.out.println( name );
+				
+			System.out.println( "" + i );
+				
+			File g = new File( pathOut + "\\" +  name );
+				
+		    f.renameTo( g );
+				
+		}
+
+		System.out.println("Files Successfully Manipulated!");
 			
-			for( File f : arrayListFile )
-			{
+		/*
 
-				i++;
-				
-				String name = f.getName().substring(13);
-
-				System.out.println( name );
-				
-				System.out.println( "" + i );
-				
-				File g = new File( pathOut + "\\" +  name );
-				
-		        f.renameTo( g );
-				
-			}
-
-			System.out.println("Files Successfully Manipulated!");
-				
-				
-				/*
-
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss");
-			    Date d = new Date(f.lastModified());
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss");
+		Date d = new Date(f.lastModified());
 			    
-			    String name = f.getName() + "_" + "IMG_" + sdf.format(d);
-			    
-
+		String name = f.getName() + "_" + "IMG_" + sdf.format(d);
 				
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_Hmmss");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_Hmmss");
 
-				Date d = new Date( f.lastModified() );
+		Date d = new Date( f.lastModified() );
 		        
-		        String name = sdf.format(d);
+        String name = sdf.format(d);
 
-		        File g = new File( pathOut + "\\" +  name + ".jpg");
+       	File g = new File( pathOut + "\\" +  name + ".jpg");
 				
-				f.renameTo( g );
-				*/
-				
-				
+		f.renameTo( g );
+		
+		*/
 
 	}
 

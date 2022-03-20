@@ -7,6 +7,8 @@ import java.io.IOException;
 public class TestText
 {
 
+	public static String fileOut = "C:\\Users\\emman\\eclipse-working\\out\\monFichier.txt";
+	
 	public static void main(String[] args)
 	{
 
@@ -35,7 +37,7 @@ public class TestText
 
 			}
 
-			fichier = new FileWriter("C:\\Users\\emman\\Transit\\out\\monFichier.txt");
+			fichier = new FileWriter( fileOut );
 		    fichier.write ( sb.toString() );
 		    fichier.close();
 

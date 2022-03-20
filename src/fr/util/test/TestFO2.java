@@ -17,10 +17,13 @@ public class TestFO2
 		StringBuffer stringBuffer;
 		String line;
 
+		String pathIn = "C:\\Users\\emman\\eclipse-working\\in";
+		String pathOut = "C:\\Users\\emman\\eclipse-working\\out";
+		
 		try
 		{
 
-			fileReader = new FileReader( "C:\\Users\\emman\\Documents\\Clock\\in\\list_in2.txt" );
+			fileReader = new FileReader( pathIn + "\\" + "list_in2.txt" );
 			bufferedReader = new BufferedReader( fileReader );
 			stringBuffer = new StringBuffer();
 			
@@ -39,7 +42,7 @@ public class TestFO2
 				
 			}
 			
-			fileWriter = new FileWriter( "C:\\Users\\emman\\Documents\\Clock\\out\\list_out2.txt" );
+			fileWriter = new FileWriter( pathOut + "\\" + "list_out2.txt" );
 			fileWriter.write( stringBuffer.toString() );
 			fileWriter.close();
 

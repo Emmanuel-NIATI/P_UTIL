@@ -15,15 +15,15 @@ import javax.sound.midi.Track;
 
 public class TestMIDI02
 {
-
 	
 	// https://www.codota.com/code/java/classes/javax.sound.midi.Sequencer
-	
 	
 	public static final int NOTE_ON = 0x90;
 	public static final int NOTE_OFF = 0x80;
 	public static final String[] NOTE_NAMES = {"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"};
 
+	public static String fileIn = "C:\\Users\\emman\\eclipse-working\\in\\KOTO - Visitors.mid";
+	
 	public static void main(String[] args)
 	{
 
@@ -42,23 +42,12 @@ public class TestMIDI02
 								
 				System.out.println();
 				
-				
 			}
 			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			Sequence sequence = MidiSystem.getSequence( new File("D:\\EclipseWorking\\in\\KOTO - Visitors.mid") );
+			Sequence sequence = MidiSystem.getSequence( new File( fileIn ) );
 
 			System.out.println( "Nombre de patch : " + sequence.getPatchList().length );
-			
-			
+
 			for( Patch patch : sequence.getPatchList() )
 			{
 
@@ -68,8 +57,6 @@ public class TestMIDI02
 				System.out.println();
 
 			}
-			
-			
 			
 			int trackNumber = 0;
 

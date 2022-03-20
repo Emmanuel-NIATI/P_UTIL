@@ -29,19 +29,22 @@ public class TestFO4
 		StringBuffer stringBuffer;
 		String line;
 
+		String pathIn = "C:\\Users\\emman\\eclipse-working\\in";
+		String pathOut = "C:\\Users\\emman\\eclipse-working\\out";
+		
 		try
 		{
 
-			fileReader1 = new FileReader( "C:\\Users\\emman\\Documents\\Clock\\in\\list_out1.txt" );
-			fileReader2 = new FileReader( "C:\\Users\\emman\\Documents\\Clock\\in\\list_out2.txt" );
-			fileReader3 = new FileReader( "C:\\Users\\emman\\Documents\\Clock\\in\\list_out3.txt" );
-						
+			fileReader1 = new FileReader( pathIn + "\\" + "list_in1.txt" );
+			fileReader2 = new FileReader( pathIn + "\\" + "list_in2.txt" );
+			fileReader3 = new FileReader( pathIn + "\\" + "list_in3.txt" );
+
 			bufferedReader1 = new BufferedReader( fileReader1 );
 			bufferedReader2 = new BufferedReader( fileReader2 );
 			bufferedReader3 = new BufferedReader( fileReader3 );
-			
+
 			al = new ArrayList();
-						
+
 			while( ( line = bufferedReader1.readLine() ) != null )
 			{
 				
@@ -91,7 +94,7 @@ public class TestFO4
 				
 			}
 
-			fileWriter = new FileWriter( "C:\\Users\\emman\\Documents\\Clock\\out\\list_out.txt" );
+			fileWriter = new FileWriter( pathOut + "\\" + "list_out.txt" );
 			fileWriter.write( stringBuffer.toString() );
 			fileWriter.close();
 

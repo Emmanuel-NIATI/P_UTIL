@@ -9,8 +9,8 @@ public class TestFile
 	public static void main(String[] args)
 	{
 		
-		String pathIn = "E:\\28 - Images\\01 - Album photo\\Année 2019";
-		
+		String pathIn = "C:\\Users\\emman\\eclipse-working\\in";
+				
 		File fileIn = new File( pathIn ); 
 
 		File[] files = fileIn.listFiles();

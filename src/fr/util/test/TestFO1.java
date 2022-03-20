@@ -18,10 +18,13 @@ public class TestFO1
 		StringBuffer stringBuffer;
 		StringTokenizer stringTokenizer;
 
+		String pathIn = "C:\\Users\\emman\\eclipse-working\\in";
+		String pathOut = "C:\\Users\\emman\\eclipse-working\\out";
+		
 		try
 		{
 
-			fileReader = new FileReader( "C:\\Users\\emman\\Documents\\Clock\\in\\list_in1.txt" );
+			fileReader = new FileReader( pathIn + "\\" + "list_in1.txt" );
 			bufferedReader = new BufferedReader( fileReader );
 
 			String line;
@@ -49,7 +52,7 @@ public class TestFO1
 
 			}
 			
-			fileWriter = new FileWriter( "C:\\Users\\emman\\Documents\\Clock\\out\\list_out1.txt" );
+			fileWriter = new FileWriter( pathOut + "\\" + "list_out1.txt" );
 			fileWriter.write( stringBuffer.toString() );
 			fileWriter.close();
 
