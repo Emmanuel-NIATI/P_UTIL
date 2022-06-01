@@ -9,7 +9,7 @@ public class TestFile
 	public static void main(String[] args)
 	{
 		
-		String pathIn = "C:\\Users\\emman\\eclipse-working\\in";
+		String pathIn = "C:\\Users\\emman\\eclipse-workspace";
 				
 		File fileIn = new File( pathIn ); 
 
@@ -24,7 +24,7 @@ public class TestFile
 			if( file.isDirectory() )
 			{
 
-				System.out.print("répertoire : " + file.getName() + "\t" );
+				System.out.print("rÃ©pertoire : " + file.getName() + "\t" );
 				
 				File[] fics = file.listFiles();     
 				File fic;
