@@ -6,50 +6,45 @@ import java.util.ArrayList;
 public class TestFile
 {
 
-	public static void main(String[] args)
+	public static void describeFile(File fileIn_)
 	{
-		
-		String pathIn = "C:\\Users\\emman\\eclipse-workspace";
-				
-		File fileIn = new File( pathIn ); 
 
-		File[] files = fileIn.listFiles();
+		File[] files = fileIn_.listFiles();
 		File file;
 
 		for(int i = 0; i < files.length; i++ )
 		{
 
 			file = files[i];
-
+			
 			if( file.isDirectory() )
 			{
-
-				System.out.print("répertoire : " + file.getName() + "\t" );
+			
+				System.out.println( "\t" + "répertoire : " + file.getName() );
+				describeFile(file);
+			}
+			else if( file.isFile() )
+			{
+			
+				System.out.println( "\t" + "fichier : " + file.getName() );
 				
-				File[] fics = file.listFiles();     
-				File fic;
-				int nbr = 0;
-				
-				for(int j = 0; j < fics.length; j++ )
-				{
-					
-					fic = fics[j];
-					
-					if( fic.isFile() )
-					{
-						nbr++;
-						//System.out.println( "fichier : " + fic.getName() );
-					}
-					
-				}
-				
-				System.out.println( "" + nbr + " fichiers" );
-				
-				System.out.println("");
+			}
+			else
+			{
 				
 			}
 			
 		}
+		
+	}
+	
+	public static void main(String[] args)
+	{
+
+		String pathIn = "C:\\Users\\emman\\eclipse-workspace";
+		File fileIn = new File(pathIn);
+
+		describeFile(fileIn);
 
 	}
 
