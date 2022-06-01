@@ -3,7 +3,7 @@ package fr.util.test;
 public class TestOperation
 {
 
-	// Ecrit une chaîne de caractère
+	// Ecrit une chaÃ®ne de caractÃ¨re
 	public static void ecrire( String chaine )
 	{
 	
@@ -11,7 +11,7 @@ public class TestOperation
 		
 	}
 	
-	// Retour à la ligne (touche entrée)
+	// Retour Ã  la ligne (touche entrÃ©e)
 	public static void retour()
 	{
 	
@@ -86,7 +86,7 @@ public class TestOperation
 
 		retour();
 		
-		// Ligne entête
+		// Ligne entÃªte
 		celluleSigne();
 		
 		for(int i=0; i<11; i++)

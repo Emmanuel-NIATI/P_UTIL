@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 
 
-// RGBA (Red Green Blue Alpha) est une extension du format de codage des couleurs RGB qui lui ajoute un canal alpha qui détermine l’opacité, pour calculer une image numérique composée de calques virtuels, superposés.
+// RGBA (Red Green Blue Alpha) est une extension du format de codage des couleurs RGB qui lui ajoute un canal alpha qui dÃ©termine lâ€™opacitÃ©, pour calculer une image numÃ©rique composÃ©e de calques virtuels, superposÃ©s.
 // A = 0 => Transparent
 // A = 255 => Opaque
 
@@ -68,7 +68,7 @@ public class TestImageAlpha
 				
 			}
 			
-			// Génération des fichiers en transparence
+			// GÃ©nÃ©ration des fichiers en transparence
 			
 			for( File f : arrayListFileIn )
 			{

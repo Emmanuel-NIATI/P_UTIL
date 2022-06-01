@@ -54,7 +54,7 @@ public class TestImageResize
 			}
 
 			
-			// Génération des fichiers de taille 2
+			// GÃ©nÃ©ration des fichiers de taille 2
 			
 			for( File f : arrayListFile )
 			{
@@ -132,7 +132,7 @@ public class TestImageResize
 			}
 
 
-			// Génération des fichiers de taille 3
+			// GÃ©nÃ©ration des fichiers de taille 3
 			
 			for( File f : arrayListFile )
 			{

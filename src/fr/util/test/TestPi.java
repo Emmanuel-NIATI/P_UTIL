@@ -21,7 +21,7 @@ public class TestPi
 	public static void main(String[] args)
 	{
 
-		System.out.println( "Pi (précision 5000000) : " + calcul( 5000000 ) );
+		System.out.println( "Pi (prÃ©cision 5000000) : " + calcul( 5000000 ) );
 	}
 
 }

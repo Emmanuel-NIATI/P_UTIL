@@ -106,7 +106,7 @@ public class TestMultiplication
 		
 		System.out.println("");
 
-		// Ligne d'entête
+		// Ligne d'entÃªte
 		celluleOperation("M");
 		
 		for(int i = 0; i < 11; i++ )
