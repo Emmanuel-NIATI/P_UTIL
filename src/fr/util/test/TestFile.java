@@ -1,6 +1,9 @@
 package fr.util.test;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 
 public class TestFile
@@ -16,7 +19,7 @@ public class TestFile
 		{
 
 			file = files[i];
-			
+
 			if( file.isDirectory() )
 			{
 			
