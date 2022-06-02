@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Properties;
 
 public class TestFile
 {
@@ -22,7 +23,7 @@ public class TestFile
 
 			if( file.isDirectory() )
 			{
-			
+				
 				System.out.println( "\t" + "répertoire : " + file.getName() );
 				describeFile(file);
 			}
@@ -44,6 +45,13 @@ public class TestFile
 	public static void main(String[] args)
 	{
 
+		Properties p = System.getProperties();
+		
+		System.out.println( p.getProperty("file.encoding") );
+
+		
+		
+		
 		String pathIn = "C:\\Users\\emman\\eclipse-workspace";
 		File fileIn = new File(pathIn);
 
