@@ -75,8 +75,8 @@ public class TestImageResize
 
 				int size2 = 2;
 
-				int widthSized2 = widthOriginal * size2;
-				int heightSized2 = heightOriginal * size2;
+				int widthSized2 = widthOriginal / size2;
+				int heightSized2 = heightOriginal / size2;
 
 				BufferedImage bufferedImageSized2 = new BufferedImage(widthSized2, heightSized2, type);
 
@@ -128,84 +128,6 @@ public class TestImageResize
 				}
 				
 				ImageIO.write( bufferedImageSized2, "png", new File( pathOut + "\\" + fileNameSubExt + "_" + strWidthSized2 + "x" + strHeightSized2 + ".png" ) );
-
-			}
-
-
-			// Génération des fichiers de taille 3
-			
-			for( File f : arrayListFile )
-			{
-		
-				System.out.println( "Fichier : " + f.getName() );
-				System.out.println( "" );
-				
-				BufferedImage bufferedImageOriginal = ImageIO.read( f );
-
-				int widthOriginal = bufferedImageOriginal.getWidth();
-				int heightOriginal = bufferedImageOriginal.getHeight();
-				
-				int type = bufferedImageOriginal.getType();
-
-				String fileName = f.getName();
-				int indexEnd = fileName.indexOf('.');
-				String fileNameSubExt = fileName.substring(0, indexEnd);
-
-				int size3 = 3;
-				
-				int widthSized3 = widthOriginal * size3;
-				int heightSized3 = heightOriginal * size3;
-
-				BufferedImage bufferedImageSized3 = new BufferedImage(widthSized3, heightSized3, type);
-
-				for (int ho = 0; ho < heightOriginal; ho++)
-				{
-
-					for (int hv = 0; hv < size3; hv++)
-					{
-
-						for (int wo = 0; wo < widthOriginal; wo++)
-						{
-
-							for (int wv = 0; wv < size3; wv++)
-							{
-
-								int ws = wo * size3 + wv;
-								int hs = ho * size3 + hv;
-								
-								bufferedImageSized3.setRGB( ws, hs, bufferedImageOriginal.getRGB( wo, ho) );
-
-							}
-
-						}
-
-					}
-
-				}
-				
-				String strWidthSized3 = "" + widthSized3;
-				
-				if( strWidthSized3.length() == 1 )
-				{
-					strWidthSized3 = "00" + strWidthSized3;
-				}
-				else if( strWidthSized3.length() == 2 )
-				{
-					strWidthSized3 = "0" + strWidthSized3;
-				}
-				
-				String strHeightSized3 = "" + heightSized3;
-
-				if( strHeightSized3.length() == 1 )
-				{
-					strHeightSized3 = "00" + strHeightSized3;
-				}
-				else if( strHeightSized3.length() == 2 )
-				{
-					strHeightSized3 = "0" + strHeightSized3;
-				}
-				
-				ImageIO.write( bufferedImageSized3, "png", new File( pathOut + "\\" + fileNameSubExt + "_" + strWidthSized3 + "x" + strHeightSized3 + ".png" ) );
 
 			}
 			

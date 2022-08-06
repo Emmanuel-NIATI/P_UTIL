@@ -149,7 +149,7 @@ public class TestImageAlpha
 					strHeightOriginal = "0" + strHeightOriginal;
 				}
 				
-				ImageIO.write( bufferedImageOriginal, "png", new File( pathOut + "\\" + fileNameSubExt + "_" + strWidthOriginal + "x" + strHeightOriginal + ".png" ) );
+				ImageIO.write( bufferedImageOriginal, "png", new File( pathOut + "\\" + fileNameSubExt + ".png" ) );
 				
 			}
 
