@@ -14,12 +14,32 @@ import javax.imageio.ImageIO;
 // A = 0 => Transparent
 // A = 255 => Opaque
 
+
+// 255 255 255 255
+//
+// from -2147483648 to 2147483647 : 4 294 967 296 values
+
+
+
+
+
+
 public class TestImageAlpha
 {
 
+	
+	
+
+	  
+	
+	
+	
 	public static void main(String[] args)
 	{
 
+		
+		
+		
 		try
 		{
 			
@@ -143,7 +163,8 @@ public class TestImageAlpha
 			
 			System.out.println("IOException : " + ioe.getMessage() );
 		}
-
+	
+		
 	}
 
 }
