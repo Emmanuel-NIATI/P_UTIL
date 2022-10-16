@@ -62,58 +62,57 @@ public class TestAnalyseImage
 		
 				System.out.println( "Fichier : " + f.getName() );
 				
-				BufferedImage bufferedImageOriginal = ImageIO.read( f );
-				
-				if( bufferedImageOriginal.getType() == BufferedImage.TYPE_4BYTE_ABGR )
+				if( "letter_A.png".equals( f.getName() ) )
 				{
+					
+					
+					
+					
+					BufferedImage bufferedImageOriginal = ImageIO.read( f );
+					
+					if( bufferedImageOriginal.getType() == BufferedImage.TYPE_4BYTE_ABGR )
+					{
+					
+						System.out.println( "type : " + "TYPE_4BYTE_ABGR" );
+						
+					}
+					
+					//	Represents an image with 8-bit RGBA color components with the colors Blue, Green, and Red stored in 3 bytes and 1 byte of alpha.
+					//	The image has a {@code ComponentColorModel} with alpha. The color data in this image is considered not to be premultiplied with
+					//	alpha. The byte data is interleaved in a single byte array in the order A, B, G, R from lower to higher byte addresses within each pixel.
+
+					System.out.println( "" );
+
+					int widthOriginal = bufferedImageOriginal.getWidth();
+					int heightOriginal = bufferedImageOriginal.getHeight();
 				
-					System.out.println( "type : " + "TYPE_4BYTE_ABGR" );
+					for( int c = 0; c < widthOriginal; c++ )
+					{
+
+						for( int l = 0; l < heightOriginal; l++ )
+						{
+							
+							int rgb = bufferedImageOriginal.getRGB(c, l);
+							
+							System.out.println( "color : " + rgb  );
+
+						}
+
+					}
+
+					
 					
 				}
 				
 				
 				
 				
-						
-						
-						
-						 /**
-					     * Represents an image with 8-bit RGBA color components with the colors
-					     * Blue, Green, and Red stored in 3 bytes and 1 byte of alpha.  The
-					     * image has a {@code ComponentColorModel} with alpha.  The
-					     * color data in this image is considered not to be premultiplied with
-					     * alpha.  The byte data is interleaved in a single
-					     * byte array in the order A, B, G, R
-					     * from lower to higher byte addresses within each pixel.
-					     */
-
-						
-						
-						
-						
-						
 				
 				
 				
 				
-				System.out.println( "" );
 				
-				int widthOriginal = bufferedImageOriginal.getWidth();
-				int heightOriginal = bufferedImageOriginal.getHeight();
-			
-				for( int c = 0; c < widthOriginal; c++ )
-				{
-
-					for( int l = 0; l < heightOriginal; l++ )
-					{
-						
-						int rgb = bufferedImageOriginal.getRGB(c, l);
-						
-						//System.out.println( "color : " + rgb  );
-
-					}
-
-				}
+				
 				
 			}
 

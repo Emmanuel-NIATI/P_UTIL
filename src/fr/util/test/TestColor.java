@@ -55,13 +55,11 @@ public class TestColor
 	 	// public final static int COLOR_YELLOW      	= 0xFFE0;  // 255, 255,   0
 	 	// public final static int COLOR_WHITE       	= 0xFFFF;  // 255, 255, 255
 	 	// public final static int COLOR_ORANGE      	= 0xFD20;  // 255, 165,   0
-		
-		
-		
-		
+				
 	 	// public final static int COLOR_GREENYELLOW	= 0xAFE5;  // 173, 255,  41
 		
 		// public final static int COLOR_PINK			= 0xFC18;  // 255, 130, 198
+		
 		int c19 = unTestColor.RGB888ToRGB565((short) 255, (short) 130, (short) 198);
 		System.out.print( "COLOR_PINK : " );
 		System.out.println( Integer.toHexString( c19 ).toUpperCase() );
@@ -70,6 +68,13 @@ public class TestColor
 		int c20 = unTestColor.RGB888ToRGB565((short) 255, (short) 165, (short) 198);
 		System.out.print( "COLOR_PINK_PAULINE : " );
 		System.out.println( Integer.toHexString( c20 ).toUpperCase() );
+		
+		// public final static COLOR_BLUE_WINDOWS	= 0x0B98;  //   8, 113, 196
+		int c21 = unTestColor.RGB888ToRGB565((short) 8, (short) 113, (short) 196);
+		System.out.print( "COLOR_BLUE_WINDOWS : " );
+		System.out.println( Integer.toHexString( c21 ).toUpperCase() );
+		
+		
 		
 		System.out.println("---------------------------------------------------");
 
