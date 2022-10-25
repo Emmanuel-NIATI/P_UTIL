@@ -16,6 +16,7 @@ public class TestFO1
 		FileReader fileReader;
 		FileWriter fileWriter;
 		StringBuffer stringBuffer;
+		String line;
 		StringTokenizer stringTokenizer;
 
 		String pathIn = "C:\\Users\\emman\\eclipse-working\\in";
@@ -24,35 +25,36 @@ public class TestFO1
 		try
 		{
 
-			fileReader = new FileReader( pathIn + "\\" + "list_in1.txt" );
+			fileReader = new FileReader( pathIn + "\\" + "traitement.txt" );
+			
 			bufferedReader = new BufferedReader( fileReader );
-
-			String line;
-
-			line = bufferedReader.readLine();
-
-			stringTokenizer = new StringTokenizer( line, ";" );
-			
 			stringBuffer = new StringBuffer();
-			
-			while ( stringTokenizer.hasMoreTokens() )
+
+			while ( (line = bufferedReader.readLine()) != null)
 			{
 				
-				String nextToken = stringTokenizer.nextToken();
-
-				int indexDebut = nextToken.indexOf("<");
+				stringTokenizer = new StringTokenizer( line, ";" );
 				
-				nextToken = nextToken.substring( indexDebut + 1 );
+				if ( stringTokenizer.hasMoreTokens() )
+				{
+					
+					String nextToken = stringTokenizer.nextToken();
 
-				int indexFin = nextToken.indexOf(">");
-				
-				nextToken = nextToken.substring( 0, indexFin );
+					int indexDebut = nextToken.indexOf("<");
+					
+					nextToken = nextToken.substring( indexDebut + 1 );
 
-				stringBuffer.append( nextToken ).append("\r");
+					int indexFin = nextToken.indexOf(">");
+					
+					nextToken = nextToken.substring( 0, indexFin );
+
+					stringBuffer.append( nextToken ).append("\r");
+
+				}
 
 			}
-			
-			fileWriter = new FileWriter( pathOut + "\\" + "list_out1.txt" );
+
+			fileWriter = new FileWriter( pathOut + "\\" + "traitement.txt" );
 			fileWriter.write( stringBuffer.toString() );
 			fileWriter.close();
 
@@ -61,6 +63,7 @@ public class TestFO1
 		{
 
 			System.out.println( "IO Exception : " + ioe.getMessage() );
+			
 		}
 
 	}
