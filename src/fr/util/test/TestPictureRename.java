@@ -19,6 +19,8 @@ import com.drew.imaging.ImageProcessingException;
 import com.drew.imaging.jpeg.JpegMetadataReader;
 import com.drew.imaging.jpeg.JpegProcessingException;
 import com.drew.imaging.jpeg.JpegSegmentMetadataReader;
+import com.drew.imaging.mp4.Mp4MetadataReader;
+
 import com.drew.metadata.Directory;
 import com.drew.metadata.Metadata;
 import com.drew.metadata.Tag;
@@ -36,6 +38,32 @@ public class TestPictureRename
 	{
 
 	}
+	
+	private String toThreeDigits( int cpt )
+	{
+		
+		String s_cpt = String.valueOf(cpt);
+		
+		if(s_cpt.length() == 1 )
+		{
+			
+			s_cpt = "00" + s_cpt;
+			
+		}
+		else if(s_cpt.length() == 2 )
+		{
+			s_cpt = "0" + s_cpt;
+		}
+		else
+		{
+			s_cpt = s_cpt;
+		}
+		
+		return s_cpt;
+		
+	}
+	
+	
 	
 	// Analyse du répertoire
 	public void analyse()
@@ -69,7 +97,7 @@ public class TestPictureRename
 			if( file.isFile() )
 			{
 
-				String ext = "jpg";
+				String ext = "";
 				String name = file.getName();
 				String rename = "";
 				
@@ -84,14 +112,54 @@ public class TestPictureRename
 				if( "jpg".equals( ext ) || "JPG".equals( ext ) )
 				{
 					
-					SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss");
-					Date d = new Date(file.lastModified());
+					try
+				    {
 
-					rename = "IMG_" + sdf.format(d);
+						Metadata metadata = JpegMetadataReader.readMetadata(file);
 
-					arrayListNameFile.add( name );
-			
-					arrayListRenameFile.add( rename );
+						for (Directory directory : metadata.getDirectories())
+						{
+					        
+							for (Tag tag : directory.getTags())
+							{
+
+								if( "Date/Time Original".equals( tag.getTagName() ) )
+								{
+
+									String date = tag.getDescription();
+									
+									String year = date.substring(0, 4);
+									String month = date.substring(5, 7);
+									String day = date.substring(8, 10);
+									
+									String hh = date.substring(11, 13);
+									String mm = date.substring(14, 16);
+									String ss = date.substring(17, 19);
+									
+									rename = "IMG_" + year + month + day + "_" + hh + mm + ss; 
+
+									arrayListNameFile.add( name );
+									arrayListRenameFile.add( rename );
+
+								}
+							
+							}
+							
+						}						
+
+				    } 
+					catch (JpegProcessingException e)
+					{
+				        	
+						System.out.println( ">>>>>>>>>>>>>>>>>>>> JpegProcessingException : " + e.getMessage() );
+
+					} 
+					catch (IOException e)
+					{
+
+						System.out.println( ">>>>>>>>>>>>>>>>>>>> IOException : " + e.getMessage() );
+
+					}
 
 				}
 
@@ -99,7 +167,7 @@ public class TestPictureRename
 
 		}
 		
-		int cpt = 0;
+		int cpt = 1;
 		
 		for(String s : arrayListRenameFile )
 		{
@@ -108,14 +176,16 @@ public class TestPictureRename
 
 			String n = arrayListNameFile.get(arrayListRenameFile.indexOf(s));
 			
-			System.out.print( cpt + " " + s + " " + freq + " " + n );
+			String s_cpt = toThreeDigits(cpt);
+			
+			System.out.print( s_cpt + " " + s + " " + freq + " " + n );
 
 			if( freq == 2 )
 			{
 
-				String l = arrayListNameFile.get(arrayListRenameFile.lastIndexOf(s));	
+				String r = arrayListNameFile.get(arrayListRenameFile.lastIndexOf(s));	
 				
-				System.out.println( " " + l );	
+				System.out.println( " " + r + " !!!");	
 
 			}
 			else
@@ -195,20 +265,24 @@ public class TestPictureRename
 	public void properties()
 	{
 		
-		File file = new File("C:\\Users\\emman\\eclipse-working\\in\\IMG_20150810_184046.jpg");
+		File file = new File("D:\\00 - Personnel\\02 - Secret\\Vidéo\\production\\Personnel - 2017-03-21\\rush\\Personnel - 2017-03-21.mp4");
 		
         try
         {
-        	Metadata metadata = JpegMetadataReader.readMetadata(file);
+        	// Metadata metadata = JpegMetadataReader.readMetadata(file);
 
-        	afficheMetaData(metadata, "Using JpegMetadataReader");
+        	Metadata metadata = Mp4MetadataReader.readMetadata(file);
+        	
+        	afficheMetaData(metadata, "Using Mp4MetadataReader");
         } 
+        /*
         catch (JpegProcessingException e)
         {
         	
         	System.out.println(e.getMessage());
 
-        } 
+        }
+        */        
         catch (IOException e)
         {
 
@@ -217,6 +291,68 @@ public class TestPictureRename
         }
 		
 	}
+
+	
+	public void renameByFileName()
+	{
+		
+		File fileIn = new File( pathIn ); 
+
+		File[] files = fileIn.listFiles();
+
+		ArrayList<File> arrayListFile = new ArrayList<File>();
+		ArrayList<String> arrayListNameFile = new ArrayList<String>();
+		ArrayList<String> arrayListRenameFile = new ArrayList<String>();
+		
+		for(int i = 0; i < files.length; i++ )
+		{
+
+			File file = files[i];
+
+			arrayListNameFile.add(file.getName());
+			
+			arrayListFile.add(file);
+
+		}
+		
+		Iterator<File> iteratorFile = arrayListFile.iterator();
+
+		while ( iteratorFile.hasNext() )
+		{
+			
+			File file = iteratorFile.next();
+			
+			if( file.isFile() )
+			{
+
+				String ext = "jpg";
+				String name = file.getName();
+				String rename = "";
+				
+				int j = name.lastIndexOf('.');
+
+				if (j > 0)
+				{
+					
+				    ext = name.substring(j+1);
+				}
+
+				if( "jpg".equals( ext ) || "JPG".equals( ext ) )
+				{
+
+					rename = "IMG_" + name; 
+					
+					arrayListRenameFile.add(rename);
+					
+					file.renameTo( new File( pathOut + "\\" +  rename + ".jpg") );
+
+				}
+				
+			}
+
+		}
+
+	}	
 
 	public void rename()
 	{
@@ -237,7 +373,7 @@ public class TestPictureRename
 			arrayListNameFile.add(file.getName());
 			
 			arrayListFile.add(file);
-
+			
 		}
 		
 		Iterator<File> iteratorFile = arrayListFile.iterator();
@@ -267,32 +403,17 @@ public class TestPictureRename
 					
 					try
 				    {
-						
-						System.out.println( "" );
-						System.out.println( "File Name : " + file.getName() );
 
 						Metadata metadata = JpegMetadataReader.readMetadata(file);
 						
 						for (Directory directory : metadata.getDirectories())
 						{
-
-							
-							// System.out.println(directory);
-							
-							//
-							// Each Directory stores values in Tag objects
-							//
 					        
 							for (Tag tag : directory.getTags())
 							{
 
 								if( "Date/Time Original".equals( tag.getTagName() ) )
 								{
-
-									System.out.print( tag.getTagName() );
-									System.out.print( " : " );
-									System.out.print( tag.getDescription() );
-									System.out.println( "" );
 									
 									String date = tag.getDescription();
 									
@@ -304,31 +425,16 @@ public class TestPictureRename
 									String mm = date.substring(14, 16);
 									String ss = date.substring(17, 19);
 									
-									System.out.println( "date : " + date );
-									
-									System.out.println( "year : " + year );
-									System.out.println( "month : " + month );
-									System.out.println( "day : " + day );
-									
-									System.out.println( "hh : " + hh );
-									System.out.println( "mm : " + mm );
-									System.out.println( "ss : " + ss );
-									
-									rename = year + month + day + "_" + hh + mm + ss; 
-									
-									System.out.println( "rename : " + rename );
+									rename = "IMG_" + year + month + day + "_" + hh + mm + ss; 
 									
 									arrayListRenameFile.add(rename);
 									
-									file.renameTo( new File( pathOut + "\\" +  "IMG_" + rename + ".jpg") );
+									file.renameTo( new File( pathOut + "\\" +  rename + ".jpg") );
 									
 								}
 
 							}
 
-							//
-							// Each Directory may also contain error messages
-							//
 							for (String error : directory.getErrors())
 							{
 								
@@ -373,10 +479,13 @@ public class TestPictureRename
 		// test.modifyProperties();
 
 		// 3. Recherche des date du fichiers
-		// test.properties();
+		test.properties();
 
-		// 4. Renommage des photos
-		test.rename();
+		// 4. Renommage des photos par le nom du fichier
+		// test.renameByFileName();
+		
+		// 5. Renommage des photos
+		// test.rename();
 
 	}
 
