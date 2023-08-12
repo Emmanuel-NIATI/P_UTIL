@@ -344,7 +344,12 @@ public class TestPictureRename
 					
 					arrayListRenameFile.add(rename);
 					
-					file.renameTo( new File( pathOut + "\\" +  rename + ".jpg") );
+					System.out.print( name );
+					System.out.print( " -> " );
+					System.out.print( rename );
+					System.out.println( "" );
+					
+					file.renameTo( new File( pathOut + "\\" +  rename ) );
 
 				}
 				
@@ -479,10 +484,10 @@ public class TestPictureRename
 		// test.modifyProperties();
 
 		// 3. Recherche des date du fichiers
-		test.properties();
+		// test.properties();
 
 		// 4. Renommage des photos par le nom du fichier
-		// test.renameByFileName();
+		test.renameByFileName();
 		
 		// 5. Renommage des photos
 		// test.rename();
