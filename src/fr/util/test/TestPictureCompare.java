@@ -154,7 +154,21 @@ public class TestPictureCompare
 
         }
 
-   }
+	}
+		
+	public void createDirectory()
+	{
+		
+		 File file;
+		 
+		 for(int i = 25; i < 55; i++)
+		 {
+		
+			 file = new File( "E:\\91 - Zone\\Zone_" + i );
+			 file.mkdir();
+		 }
+		
+	}
 		
 	public static void main(String[] args)
 	{
@@ -165,7 +179,11 @@ public class TestPictureCompare
 		// 1. Analyse du répertoire
 		// testCompare.analysePath();
 
-		testCompare.display( pathD );
+		// 2. Affichage du répertoire d:\
+		// testCompare.display( pathD );
+
+		// 3. Création de répertoire
+		// testCompare.createDirectory();
 		
 		
 	}

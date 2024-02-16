@@ -65,16 +65,13 @@ public class TestAnalyseImage
 				if( "letter_A.png".equals( f.getName() ) )
 				{
 					
-					
-					
-					
 					BufferedImage bufferedImageOriginal = ImageIO.read( f );
 					
 					if( bufferedImageOriginal.getType() == BufferedImage.TYPE_4BYTE_ABGR )
 					{
-					
+
 						System.out.println( "type : " + "TYPE_4BYTE_ABGR" );
-						
+
 					}
 					
 					//	Represents an image with 8-bit RGBA color components with the colors Blue, Green, and Red stored in 3 bytes and 1 byte of alpha.
@@ -99,20 +96,8 @@ public class TestAnalyseImage
 						}
 
 					}
-
-					
 					
 				}
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
 				
 			}
 

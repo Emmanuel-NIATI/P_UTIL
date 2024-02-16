@@ -31,8 +31,10 @@ public class TestPictureRename
 {
 
 	String pathIn = "C:\\Users\\emman\\eclipse-working\\in";
+	String pathIn1 = "C:\\Users\\emman\\eclipse-working\\in1";
+	String pathIn2 = "C:\\Users\\emman\\eclipse-working\\in2";
 	String pathOut = "C:\\Users\\emman\\eclipse-working\\out";
-	
+		
 	// Constructeur
 	public TestPictureRename()
 	{
@@ -62,6 +64,339 @@ public class TestPictureRename
 		return s_cpt;
 		
 	}
+	
+	// Analyse du répertoire in1
+	public void analysePathIn1()
+	{
+		
+		File fileIn1 = new File( pathIn1 );
+		
+		File[] files = fileIn1.listFiles();
+		
+		ArrayList<File> arrayListFile = new ArrayList<File>();
+		
+		for(int i = 0; i < files.length; i++ )
+		{
+
+			File file = files[i];
+
+			arrayListFile.add(file);
+
+		}
+		
+		Iterator<File> iteratorFile = arrayListFile.iterator();
+		
+		System.out.println( ">>>>>>>>>>>>>>>>>>>> In1 : ");
+		
+		while ( iteratorFile.hasNext() )
+		{
+			
+			File file = iteratorFile.next();
+			
+			if( file.isFile() )
+			{
+
+				String ext = "";
+				String name = file.getName();
+				String rename = "";
+				
+				int j = name.lastIndexOf('.');
+
+				if (j > 0)
+				{
+					
+				    ext = name.substring(j+1);
+				}
+
+				if( "jpg".equals( ext ) || "JPG".equals( ext ) )
+				{
+					
+					try
+				    {
+
+						Metadata metadata = JpegMetadataReader.readMetadata(file);
+
+						for (Directory directory : metadata.getDirectories())
+						{
+					        
+							for (Tag tag : directory.getTags())
+							{
+
+								if( "Date/Time Original".equals( tag.getTagName() ) )
+								{
+
+									String date = tag.getDescription();
+									
+									String year = date.substring(0, 4);
+									String month = date.substring(5, 7);
+									String day = date.substring(8, 10);
+									
+									String hh = date.substring(11, 13);
+									String mm = date.substring(14, 16);
+									String ss = date.substring(17, 19);
+
+									rename = "IMG_" + year + month + day + "_" + hh + mm + ss + ".jpg"; 
+
+									System.out.print( name + " / " + rename + " / " );
+
+									if( name.equals( rename ) )
+									{
+
+										System.out.println( "OK !" );
+										
+									}
+									else
+									{
+										
+										System.out.println( "Warning !!!" );
+										
+									}
+									
+									file.renameTo( new File( pathOut + "\\" +  rename ) );						
+
+								}
+							
+							}
+							
+						}						
+
+				    } 
+					catch (JpegProcessingException e)
+					{
+				        	
+						System.out.println( ">>>>>>>>>>>>>>>>>>>> JpegProcessingException : " + e.getMessage() );
+
+					} 
+					catch (IOException e)
+					{
+
+						System.out.println( ">>>>>>>>>>>>>>>>>>>> IOException : " + e.getMessage() );
+
+					}
+
+				}
+
+			}
+			
+			
+			
+			
+		}		
+		
+	}
+	
+	// Analyse du répertoire in2
+	public void analysePathIn2()
+	{
+		
+		File fileIn2 = new File( pathIn2 );
+		
+		File[] files = fileIn2.listFiles();
+		
+		ArrayList<File> arrayListFile = new ArrayList<File>();
+		
+		for(int i = 0; i < files.length; i++ )
+		{
+
+			File file = files[i];
+
+			arrayListFile.add(file);
+
+		}
+		
+		Iterator<File> iteratorFile = arrayListFile.iterator();
+		
+		System.out.println( ">>>>>>>>>>>>>>>>>>>> In2 : ");
+		
+		while ( iteratorFile.hasNext() )
+		{
+			
+			File file = iteratorFile.next();
+			
+			if( file.isFile() )
+			{
+
+				String ext = "";
+				String name = file.getName();
+				String rename = "";
+				
+				int j = name.lastIndexOf('.');
+
+				if (j > 0)
+				{
+					
+				    ext = name.substring(j+1);
+				}
+
+				if( "jpg".equals( ext ) || "JPG".equals( ext ) )
+				{
+					
+					try
+				    {
+
+						Metadata metadata = JpegMetadataReader.readMetadata(file);
+
+						for (Directory directory : metadata.getDirectories())
+						{
+					        
+							for (Tag tag : directory.getTags())
+							{
+
+								if( "Date/Time Original".equals( tag.getTagName() ) )
+								{
+
+									String date = tag.getDescription();
+									
+									String year = date.substring(0, 4);
+									String month = date.substring(5, 7);
+									String day = date.substring(8, 10);
+									
+									String hh = date.substring(11, 13);
+									String mm = date.substring(14, 16);
+									String ss = date.substring(17, 19);
+
+									rename = "IMG_" + year + month + day + "_" + hh + mm + ss + ".jpg"; 
+
+									System.out.print( name + " / " + rename + " / " );
+
+									if( name.equals( rename ) )
+									{
+
+										System.out.println( "OK !" );
+										
+									}
+									else
+									{
+										
+										System.out.println( "Warning !!!" );
+										
+									}
+									
+									file.renameTo( new File( pathOut + "\\" +  rename ) );						
+
+								}
+							
+							}
+							
+						}						
+
+				    } 
+					catch (JpegProcessingException e)
+					{
+				        	
+						System.out.println( ">>>>>>>>>>>>>>>>>>>> JpegProcessingException : " + e.getMessage() );
+
+					} 
+					catch (IOException e)
+					{
+
+						System.out.println( ">>>>>>>>>>>>>>>>>>>> IOException : " + e.getMessage() );
+
+					}
+
+				}
+
+			}
+			
+			
+			
+			
+		}		
+		
+	}
+	
+
+	// 
+	public void comparePathIn()
+	{
+
+		// Path in1
+		File fileIn1 = new File( pathIn1 );
+			
+		File[] filesIn1 = fileIn1.listFiles();
+		
+		ArrayList<File> arrayListFileIn1 = new ArrayList<File>();
+		
+		System.out.println( ">>>>>>>>>>>>>>>>>>> in1 : " + filesIn1.length );
+		
+		for(int i = 0; i < filesIn1.length; i++ )
+		{
+
+			File file = filesIn1[i];
+
+			arrayListFileIn1.add(file);
+
+		}
+
+		
+		// Path in2
+		
+		File fileIn2 = new File( pathIn2 );
+		
+		File[] filesIn2 = fileIn2.listFiles();
+		
+		ArrayList<File> arrayListFileIn2 = new ArrayList<File>();
+
+		System.out.println( ">>>>>>>>>>>>>>>>>>> in2 : " + filesIn2.length );
+				
+		for(int i = 0; i < filesIn2.length; i++ )
+		{
+
+			File file = filesIn2[i];
+
+			arrayListFileIn2.add(file);
+
+		}
+		
+		System.out.println( ">>>>>>>>>>>>>>>>>>> in2 : " + filesIn2.length );
+		
+		System.out.println( "" );
+		
+		// On vérifie si un fichier de in1 se trouve dans in2
+		
+		int l = 0;
+		
+		for( File f1 : arrayListFileIn1 )
+		{
+			
+			for( File f2 : arrayListFileIn2 )
+			{
+				
+				if( f1.getName().equals( f2.getName() ) )
+				{
+
+					l++;
+					
+					System.out.println( ">>>>>>>>>>>>>>>>>>> ligne : " + l );
+					System.out.println( ">>>>>>>>>>>>>>>>>>> f1 : " + f1.getName() + " taille : " + f1.getTotalSpace() );		
+					System.out.println( ">>>>>>>>>>>>>>>>>>> f2 : " + f2.getName() + " taille : " + f2.getTotalSpace() );
+					System.out.println( "" );
+					
+				}
+
+			}
+			
+		}
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
@@ -478,8 +813,10 @@ public class TestPictureRename
 		TestPictureRename test = new TestPictureRename();
 
 		// 1. Analyse du répertoire
-		// test.analyse();
-
+		// test.analysePathIn1();
+		// test.analysePathIn2();
+		test.comparePathIn();
+		
 		// 2. Modification des propriétés d'un fichier
 		// test.modifyProperties();
 
@@ -487,7 +824,7 @@ public class TestPictureRename
 		// test.properties();
 
 		// 4. Renommage des photos par le nom du fichier
-		test.renameByFileName();
+		// test.renameByFileName();
 		
 		// 5. Renommage des photos
 		// test.rename();
