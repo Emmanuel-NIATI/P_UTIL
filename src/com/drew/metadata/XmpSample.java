@@ -20,6 +20,7 @@
  */
 package com.drew.metadata;
 
+
 import com.adobe.internal.xmp.XMPException;
 import com.adobe.internal.xmp.XMPIterator;
 import com.adobe.internal.xmp.XMPMeta;
