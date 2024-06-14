@@ -1,6 +1,5 @@
 package fr.util.test;
 
-import java.awt.GridBagConstraints;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -11,93 +10,53 @@ import java.util.StringTokenizer;
 public class TestText
 {
 	
-	public static void traitementJava()
-	{
-		
-		String fileOut = "C:\\Users\\emman\\eclipse-working\\out\\monFichier.txt";
-		
-		StringBuffer sb = new StringBuffer();
-		
-		FileWriter fichier;
-
-		try
-		{
-
-			for(int j = 0; j < 4; j++)
-			{
-			
-				for(int i = 0; i < 16; i++)
-				{
-
-					sb.append( "gridBagConstraintsCenterClock.fill = GridBagConstraints.HORIZONTAL;" ).append( "\n" );
-					sb.append( "gridBagConstraintsCenterClock.gridwidth = 1;" ).append( "\n" );
-					sb.append( "gridBagConstraintsCenterClock.gridheight = 1;" ).append( "\n" );
-					sb.append( "gridBagConstraintsCenterClock.gridx = " + i + ";" ).append( "\n" );
-					sb.append( "gridBagConstraintsCenterClock.gridy = " + j + ";" ).append( "\n" );
-					sb.append( "jPanelCenterClock.add(jLabelIconCenterClock_0" +i+ "_0" +j+ ", gridBagConstraintsCenterClock);" ).append( "\n" );
-					sb.append( "\n" );
-					
-				}
-
-			}
-
-			fichier = new FileWriter( fileOut );
-		    fichier.write ( sb.toString() );
-		    fichier.close();
-
-		} 
-		catch (IOException e)
-		{
-
-			e.printStackTrace();
-		}
-
-		
-	}
-	
-	public static void traitementBlacklist()
-	{
-		
-	}	
-	
 	public static void main(String[] args)
 	{
 
 		BufferedReader bufferedReader;
 		FileReader fileReader;
-		FileWriter fileWriter;
 		StringBuffer stringBuffer;
-		String line;
-		StringTokenizer stringTokenizer;
 
-		String pathIn = "C:\\Users\\emman\\eclipse-working\\in";
-		String pathOut = "C:\\Users\\emman\\eclipse-working\\out";
+		int l = 0;
+		String line;
+
+		int index;
 		
+		FileWriter fileWriter;
+		
+		String sFileIn = "C:\\Users\\emman\\eclipse-working\\in\\terre.txt";
+		String sFileOut = "C:\\Users\\emman\\eclipse-working\\out\\terre.txt";
+
 		try
 		{
 
-			fileReader = new FileReader( pathIn + "\\" + "blacklist.txt" );
+			fileReader = new FileReader( sFileIn );
 
 			bufferedReader = new BufferedReader( fileReader );
 			stringBuffer = new StringBuffer();
-						
+
 			while ( (line = bufferedReader.readLine()) != null)
 			{
+
+				System.out.println( "Read Line Buffered Reader : " + "line : " + l );
 				
-				stringTokenizer = new StringTokenizer( line, ";" );
-				
-				if ( stringTokenizer.hasMoreTokens() )
+				System.out.println( "Read Line Buffered Reader : " + "line : " + line );
+
+				if( line.endsWith("@intradef.gouv.fr") )
 				{
-					
-					String nextToken = stringTokenizer.nextToken();
-					
-					stringBuffer.append( line.substring( nextToken.length()+1 ) ).append("\r");
+
+					stringBuffer.append(line);
+					stringBuffer.append("\r");
 
 				}
-				
+
+				l++;
+
 			}
 
-			fileWriter = new FileWriter( pathOut + "\\" + "blacklist.txt" );
+			System.out.println( "String Buffer : " + "taille : " + stringBuffer.length() );
+			
+			fileWriter = new FileWriter( sFileOut );
 			fileWriter.write( stringBuffer.toString() );
 			fileWriter.close();
 
@@ -112,6 +71,12 @@ public class TestText
 		{
 			
 			System.out.println( "IO Exception : " + ioe.getMessage() );
+			
+		}
+		catch (Exception e)
+		{
+			
+			System.out.println( "Exception : " + e.getMessage() );
 			
 		}
 		

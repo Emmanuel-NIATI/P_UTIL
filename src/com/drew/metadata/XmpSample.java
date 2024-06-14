@@ -20,6 +20,10 @@
  */
 package com.drew.metadata;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> branch 'master' of https://github.com/Emmanuel-NIATI/P_UTIL
 import com.adobe.internal.xmp.XMPException;
 import com.adobe.internal.xmp.XMPIterator;
 import com.adobe.internal.xmp.XMPMeta;
