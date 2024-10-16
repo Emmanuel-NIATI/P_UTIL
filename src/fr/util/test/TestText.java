@@ -24,8 +24,8 @@ public class TestText
 		
 		FileWriter fileWriter;
 		
-		String sFileIn = "C:\\Users\\emman\\eclipse-working\\in\\terre.txt";
-		String sFileOut = "C:\\Users\\emman\\eclipse-working\\out\\terre.txt";
+		String sFileIn = "C:\\Users\\emman\\eclipse-working\\in\\technique.txt";
+		String sFileOut = "C:\\Users\\emman\\eclipse-working\\out\\technique.txt";
 
 		try
 		{
@@ -35,16 +35,19 @@ public class TestText
 			bufferedReader = new BufferedReader( fileReader );
 			stringBuffer = new StringBuffer();
 
-			while ( (line = bufferedReader.readLine()) != null)
+			while ( (line = bufferedReader.readLine()) != null )
 			{
-
-				System.out.println( "Read Line Buffered Reader : " + "line : " + l );
 				
 				System.out.println( "Read Line Buffered Reader : " + "line : " + line );
-
+				
 				if( line.endsWith("@intradef.gouv.fr") )
 				{
 
+					System.out.println( "Read Line Buffered Reader : " + "line : " + l );
+					
+					System.out.println( "Read Line Buffered Reader : " + "line : " + line );
+
+					
 					stringBuffer.append(line);
 					stringBuffer.append("\r");
 
@@ -55,6 +58,7 @@ public class TestText
 			}
 
 			System.out.println( "String Buffer : " + "taille : " + stringBuffer.length() );
+			System.out.println( "String Buffer : " + stringBuffer.toString() );
 			
 			fileWriter = new FileWriter( sFileOut );
 			fileWriter.write( stringBuffer.toString() );
