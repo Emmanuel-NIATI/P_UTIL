@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.StringTokenizer;
+import java.io.PrintWriter;
 
 public class TestText
 {
@@ -15,12 +15,9 @@ public class TestText
 
 		BufferedReader bufferedReader;
 		FileReader fileReader;
-		StringBuffer stringBuffer;
+		PrintWriter printWriter;
 
-		int l = 0;
 		String line;
-
-		int index;
 		
 		FileWriter fileWriter;
 		
@@ -31,10 +28,10 @@ public class TestText
 		{
 
 			fileReader = new FileReader( sFileIn );
-
 			bufferedReader = new BufferedReader( fileReader );
-			stringBuffer = new StringBuffer();
 
+			printWriter = new PrintWriter(sFileOut, "UTF-8");
+			
 			while ( (line = bufferedReader.readLine()) != null )
 			{
 				
@@ -43,26 +40,15 @@ public class TestText
 				if( line.endsWith("@intradef.gouv.fr") )
 				{
 
-					System.out.println( "Read Line Buffered Reader : " + "line : " + l );
 					
-					System.out.println( "Read Line Buffered Reader : " + "line : " + line );
-
 					
-					stringBuffer.append(line);
-					stringBuffer.append("\r");
+					printWriter.println(line);
 
 				}
 
-				l++;
-
 			}
 
-			System.out.println( "String Buffer : " + "taille : " + stringBuffer.length() );
-			System.out.println( "String Buffer : " + stringBuffer.toString() );
-			
-			fileWriter = new FileWriter( sFileOut );
-			fileWriter.write( stringBuffer.toString() );
-			fileWriter.close();
+			printWriter.close();;			
 
 		}
 		catch (FileNotFoundException fnfe)
