@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.StringTokenizer;
+import java.io.PrintWriter;
 
 public class TestText
 {
@@ -15,50 +15,40 @@ public class TestText
 
 		BufferedReader bufferedReader;
 		FileReader fileReader;
-		StringBuffer stringBuffer;
+		PrintWriter printWriter;
 
-		int l = 0;
 		String line;
-
-		int index;
 		
 		FileWriter fileWriter;
 		
-		String sFileIn = "C:\\Users\\emman\\eclipse-working\\in\\terre.txt";
-		String sFileOut = "C:\\Users\\emman\\eclipse-working\\out\\terre.txt";
+		String sFileIn = "C:\\Users\\emman\\eclipse-working\\in\\technique.txt";
+		String sFileOut = "C:\\Users\\emman\\eclipse-working\\out\\technique.txt";
 
 		try
 		{
 
 			fileReader = new FileReader( sFileIn );
-
 			bufferedReader = new BufferedReader( fileReader );
-			stringBuffer = new StringBuffer();
 
-			while ( (line = bufferedReader.readLine()) != null)
+			printWriter = new PrintWriter(sFileOut, "UTF-8");
+			
+			while ( (line = bufferedReader.readLine()) != null )
 			{
-
-				System.out.println( "Read Line Buffered Reader : " + "line : " + l );
 				
 				System.out.println( "Read Line Buffered Reader : " + "line : " + line );
-
+				
 				if( line.endsWith("@intradef.gouv.fr") )
 				{
 
-					stringBuffer.append(line);
-					stringBuffer.append("\r");
+					
+					
+					printWriter.println(line);
 
 				}
 
-				l++;
-
 			}
 
-			System.out.println( "String Buffer : " + "taille : " + stringBuffer.length() );
-			
-			fileWriter = new FileWriter( sFileOut );
-			fileWriter.write( stringBuffer.toString() );
-			fileWriter.close();
+			printWriter.close();;			
 
 		}
 		catch (FileNotFoundException fnfe)
