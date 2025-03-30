@@ -64,15 +64,22 @@ public class TestImageAlpha
 					{
 
 						sb.append( "- Fichier : " ).append( f.getName() ).append( "\n" );
-						sb.append( "-" ).append( "\n" );
+						sb.append( "\n" );
 
 						BufferedImage bufferedImageOriginal = ImageIO.read( f );
 
 						int widthOriginal = bufferedImageOriginal.getWidth();
 						int heightOriginal = bufferedImageOriginal.getHeight();
 						
+						sb.append( "- Width : " ).append( widthOriginal ).append( "\n" );
+						sb.append( "- Height : " ).append( heightOriginal ).append( "\n" );
+						sb.append( "\n" );
+						
 						int type = bufferedImageOriginal.getType();
 
+						
+						
+						
 						sb.append( "- Type : " ).append( type ).append( "\n" );
 						sb.append( "-" ).append( "\n" );
 						
@@ -287,6 +294,10 @@ public class TestImageAlpha
 									bufferedImageOriginal.setRGB(c,  l, 16777215);
 
 								}
+								else if( rgb == -16777216 )
+								{
+									bufferedImageOriginal.setRGB(c,  l, -1);
+								}
 
 							}
 						
@@ -326,11 +337,11 @@ public class TestImageAlpha
 		// testImageAlpha.analyseImage();
 
 		// Génération de chaque image avec couleur
-		testImageAlpha.couleurImage();
+		//testImageAlpha.couleurImage();
 		
 		// Génération de chaque image en transparence
-		// testImageAlpha.alphaImage();
-
+		testImageAlpha.alphaImage();
+		
 	}
 
 }
