@@ -65,6 +65,69 @@ public class TestPictureRename
 		
 	}
 	
+	// Analyse du répertoire in
+	public void analysePathIn()
+	{
+		
+		File fileIn = new File( pathIn );
+		
+		File[] files = fileIn.listFiles();
+		
+		ArrayList<File> arrayListFile = new ArrayList<File>();
+		
+		for(int i = 0; i < files.length; i++ )
+		{
+
+			File file = files[i];
+
+			arrayListFile.add(file);
+
+		}
+		
+		Iterator<File> iteratorFile = arrayListFile.iterator();
+		
+		System.out.println( ">>>>>>>>>>>>>>>>>>>> In : ");
+				
+		while ( iteratorFile.hasNext() )
+		{
+			
+			File file = iteratorFile.next();
+			
+			if( file.isFile() )
+			{
+
+				String ext = "";
+				String name = file.getName();
+				String rename = "";
+				
+				int j = name.lastIndexOf('.');
+
+				if (j > 0)
+				{
+					
+				    ext = name.substring(j+1);
+				}
+
+				if( "jpg".equals( ext ) || "JPG".equals( ext ) )
+				{
+
+					rename = "IMG_" + name;
+					
+					System.out.print( name );
+					
+					System.out.print( " / " );
+					
+					System.out.println( rename );
+
+				}
+
+			}
+			
+		}		
+		
+	}	
+	
+	
 	// Analyse du répertoire in1
 	public void analysePathIn1()
 	{
@@ -86,7 +149,7 @@ public class TestPictureRename
 		
 		Iterator<File> iteratorFile = arrayListFile.iterator();
 		
-		System.out.println( ">>>>>>>>>>>>>>>>>>>> In1 : ");
+		System.out.println( ">>>>>>>>>>>>>>>>>>>> In : ");
 		
 		while ( iteratorFile.hasNext() )
 		{
@@ -813,9 +876,10 @@ public class TestPictureRename
 		TestPictureRename test = new TestPictureRename();
 
 		// 1. Analyse du répertoire
+		// test.analysePathIn();
 		// test.analysePathIn1();
 		// test.analysePathIn2();
-		test.comparePathIn();
+		// test.comparePathIn();
 		
 		// 2. Modification des propriétés d'un fichier
 		// test.modifyProperties();
@@ -824,7 +888,7 @@ public class TestPictureRename
 		// test.properties();
 
 		// 4. Renommage des photos par le nom du fichier
-		// test.renameByFileName();
+		test.renameByFileName();
 		
 		// 5. Renommage des photos
 		// test.rename();
