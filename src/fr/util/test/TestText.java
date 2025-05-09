@@ -10,8 +10,8 @@ import java.io.PrintWriter;
 public class TestText
 {
 	
-	String sFileIn = "C:\\Users\\emman\\eclipse-working\\in\\tous_02.txt";
-	String sFileOut = "C:\\Users\\emman\\eclipse-working\\out\\tous_02.txt";
+	String sFileIn = "C:\\Users\\emman\\eclipse-working\\in\\Liste_TSEF.txt";
+	String sFileOut = "C:\\Users\\emman\\eclipse-working\\out\\Liste_TSEF.txt";
 	
 	public TestText()
 	{
@@ -102,7 +102,7 @@ public class TestText
 				
 				System.out.println( "Read Line Buffered Reader : " + "line : " + line );
 				
-				if( line.contains("@intradef.gouv.fr") );
+				if( line.contains("@intradef.gouv.fr") )
 				{
 					
 					System.out.println( "@intradef.gouv.fr : " + "OK !!!");
@@ -120,6 +120,11 @@ public class TestText
 					printWriter.println(line);
 
 				}
+				else
+				{
+					System.out.println( "@intradef.gouv.fr : " + "KO !!!");	
+				}
+				
 
 			}
 
