@@ -21,8 +21,8 @@ public class TestText
 		
 		FileWriter fileWriter;
 		
-		String sFileIn = "C:\\Users\\emman\\eclipse-working\\in\\technique.txt";
-		String sFileOut = "C:\\Users\\emman\\eclipse-working\\out\\technique.txt";
+		String sFileIn = "C:\\Users\\emman\\eclipse-working\\in\\Liste_cat_B.txt";
+		String sFileOut = "C:\\Users\\emman\\eclipse-working\\out\\Liste_cat_B.txt";
 
 		try
 		{
@@ -40,8 +40,6 @@ public class TestText
 				if( line.endsWith("@intradef.gouv.fr") )
 				{
 
-					
-					
 					printWriter.println(line);
 
 				}

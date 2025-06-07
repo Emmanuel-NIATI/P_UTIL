@@ -23,26 +23,22 @@ public class TestFO2
 		try
 		{
 
-			fileReader = new FileReader( pathIn + "\\" + "list_in2.txt" );
+			fileReader = new FileReader( pathIn + "\\" + "Liste_cat_B.txt" );
 			bufferedReader = new BufferedReader( fileReader );
 			stringBuffer = new StringBuffer();
 			
 			while( ( line = bufferedReader.readLine() ) != null )
 			{
 
-				int indexDebut = line.indexOf("'");				
-
-				line = line.substring( indexDebut + 1 );
-				
-				int indexFin = line.indexOf("'");
-				
-				line = line.substring( 0, indexFin );
-
-				stringBuffer.append( line ).append("\r");
+				if( line.contains("@intradef.gouv.fr") )
+				{
+					stringBuffer.append( line ).append("\r");
+					System.out.println( line );
+				}
 				
 			}
 			
-			fileWriter = new FileWriter( pathOut + "\\" + "list_out2.txt" );
+			fileWriter = new FileWriter( pathOut + "\\" + "Liste_cat_B.txt" );
 			fileWriter.write( stringBuffer.toString() );
 			fileWriter.close();
 
