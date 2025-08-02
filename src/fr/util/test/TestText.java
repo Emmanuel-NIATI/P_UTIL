@@ -10,43 +10,58 @@ import java.io.PrintWriter;
 public class TestText
 {
 	
-	public static void main(String[] args)
+	String sFileIn = "C:\\Users\\emman\\eclipse-working\\in\\Liste_TSEF.txt";
+	String sFileOut = "C:\\Users\\emman\\eclipse-working\\out\\Liste_TSEF.txt";
+	
+	public TestText()
 	{
-
+		
+	}
+	
+	public void analyseText()
+	{
+		
 		BufferedReader bufferedReader;
 		FileReader fileReader;
 		PrintWriter printWriter;
-
 		String line;
-		
 		FileWriter fileWriter;
+<<<<<<< HEAD
 		
 		String sFileIn = "C:\\Users\\emman\\eclipse-working\\in\\Liste_cat_B.txt";
 		String sFileOut = "C:\\Users\\emman\\eclipse-working\\out\\Liste_cat_B.txt";
+=======
+>>>>>>> branch 'master' of https://github.com/Emmanuel-NIATI/P_UTIL
 
 		try
 		{
 
 			fileReader = new FileReader( sFileIn );
 			bufferedReader = new BufferedReader( fileReader );
-
-			printWriter = new PrintWriter(sFileOut, "UTF-8");
 			
 			while ( (line = bufferedReader.readLine()) != null )
 			{
+
+				System.out.print( "Read Line Buffered Reader : " + "line : " + line );
 				
-				System.out.println( "Read Line Buffered Reader : " + "line : " + line );
-				
-				if( line.endsWith("@intradef.gouv.fr") )
+				if( line.contains("intradef.gouv.fr"))
 				{
+<<<<<<< HEAD
 
 					printWriter.println(line);
 
+=======
+					
+					System.out.println( " OK !!!!");
+					
+>>>>>>> branch 'master' of https://github.com/Emmanuel-NIATI/P_UTIL
 				}
-
+				else
+				{
+					System.out.println( "");
+				}
+				
 			}
-
-			printWriter.close();;			
 
 		}
 		catch (FileNotFoundException fnfe)
@@ -67,6 +82,98 @@ public class TestText
 			System.out.println( "Exception : " + e.getMessage() );
 			
 		}
+		
+	}
+
+	
+	
+	
+	public void convertText()
+	{
+		
+		BufferedReader bufferedReader;
+		FileReader fileReader;
+		PrintWriter printWriter;
+		String line;
+
+		try
+		{
+
+			fileReader = new FileReader( sFileIn );
+			bufferedReader = new BufferedReader( fileReader );
+
+			printWriter = new PrintWriter(sFileOut, "UTF-8");
+			
+			while ( (line = bufferedReader.readLine()) != null )
+			{
+
+							
+				System.out.println( "Read Line Buffered Reader : " + "line : " + line );
+				
+				line = line.toLowerCase();
+				
+				System.out.println( "Read Line Buffered Reader : " + "line : " + line );
+				
+				if( line.contains("@intradef.gouv.fr") )
+				{
+					
+					System.out.println( "@intradef.gouv.fr : " + "OK !!!");
+					
+					line = line.strip();
+					
+					char[] str = line.toCharArray();
+					
+					for(int i=0; i< str.length; i++)
+					{
+						System.out.println( "str[" + i + "]" + " " + str[i] );	
+					}
+
+					System.out.println( "Write Line : " + "line : " + line );
+					printWriter.println(line);
+
+				}
+				else
+				{
+					System.out.println( "@intradef.gouv.fr : " + "KO !!!");	
+				}
+				
+
+			}
+
+			printWriter.close();
+
+		}
+		catch (FileNotFoundException fnfe)
+		{
+
+			System.out.println( "File Not Found Exception : " + fnfe.getMessage() );
+			
+		}
+		catch (IOException ioe)
+		{
+			
+			System.out.println( "IO Exception : " + ioe.getMessage() );
+			
+		}
+		catch (Exception e)
+		{
+			
+			System.out.println( "Exception : " + e.getMessage() );
+			
+		}
+		
+	}
+		
+	
+	
+	public static void main(String[] args)
+	{
+
+		TestText testText = new TestText();
+
+		// testText.analyseText();
+		
+		testText.convertText();
 		
 	}
 
