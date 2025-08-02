@@ -23,21 +23,15 @@ public class TestText
 		
 		BufferedReader bufferedReader;
 		FileReader fileReader;
-		PrintWriter printWriter;
 		String line;
 		FileWriter fileWriter;
-<<<<<<< HEAD
-		
-		String sFileIn = "C:\\Users\\emman\\eclipse-working\\in\\Liste_cat_B.txt";
-		String sFileOut = "C:\\Users\\emman\\eclipse-working\\out\\Liste_cat_B.txt";
-=======
->>>>>>> branch 'master' of https://github.com/Emmanuel-NIATI/P_UTIL
 
 		try
 		{
 
 			fileReader = new FileReader( sFileIn );
 			bufferedReader = new BufferedReader( fileReader );
+			fileWriter = new FileWriter( sFileOut );
 			
 			while ( (line = bufferedReader.readLine()) != null )
 			{
@@ -46,15 +40,11 @@ public class TestText
 				
 				if( line.contains("intradef.gouv.fr"))
 				{
-<<<<<<< HEAD
 
-					printWriter.println(line);
-
-=======
+					fileWriter.write(line);
 					
 					System.out.println( " OK !!!!");
 					
->>>>>>> branch 'master' of https://github.com/Emmanuel-NIATI/P_UTIL
 				}
 				else
 				{
