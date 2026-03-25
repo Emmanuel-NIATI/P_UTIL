@@ -10,21 +10,21 @@ public class TestType
 
 	1) Types primitifs (8 au total). Ces types sont prédéfinis par Java et identifiés par des mots-clés :
 
-	byte :		entier signé 8 bits, plage de -128 à 127.
+	byte :		entier signé 8 bits, plage de -128 à 127
 	
-	short :		entier signé 16 bits, plage de -32 768 à 32 767.
+	short :		entier signé 16 bits, plage de -32 768 à 32 767
 	
-	int :		entier signé 32 bits, plage de -2 147 483 648 à 2 147 483 647.
+	int :		entier signé 32 bits, plage de -2 147 483 648 à 2 147 483 647
 	
-	long :		entier signé 64 bits, plage très large pour grands nombres.
+	long :		entier signé 64 bits, plage de -9 223 372 036 854 775 808 à	9 223 372 036 854 775 807
+	
+	float :		nombre à virgule flottante simple précision 32 bits (IEEE 754)
 
-	float :		nombre à virgule flottante simple précision 32 bits (IEEE 754).
+	double :	nombre à virgule flottante double précision 64 bits
 
-	double :	nombre à virgule flottante double précision 64 bits.
+	boolean : 	valeurs logiques true ou false
 
-	boolean : 	valeurs logiques true ou false.
-
-	char : 		caractère Unicode 16 bits, plage de '\u0000' à '\uffff'.
+	char : 		caractère Unicode 16 bits, plage de '\u0000' à '\uffff'
 
 
 	2) Types de référence. Ils représentent des objets ou tableaux. Une variable de référence pointe vers une instance créée via un constructeur. La valeur par défaut est null.
